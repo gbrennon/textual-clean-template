@@ -1,0 +1,45 @@
+[project]
+name = "textual-clean-hex-template"
+version = "0.1.0"
+description = "Clean Hexagonal Architecture template for Textual TUI applications"
+readme = "README.md"
+authors = [
+    { name = "Glauber Brennon", email = "glauberbrennon@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "rich>=14.3.2",
+    "textual>=7.5.0",
+]
+
+[project.scripts]
+tui-app = "tui_app:main"
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "tui_app"
+source-dir = "src"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "--cov=src/tui_app --cov-report=term-missing"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+exclude_lines = [
+    "if __name__ == .__main__.:",
+    "^\\s+\\.\\.\\.$",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "pytest-asyncio>=0.25.0",
+]

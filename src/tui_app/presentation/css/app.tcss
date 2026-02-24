@@ -1,0 +1,4 @@
+/* Base application styles. Add your styles here. */
+Screen {
+    background: $surface;
+}
